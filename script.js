@@ -19,19 +19,18 @@ function handleCellClick(cell) {
   board[index] = currentPlayer;
   cell.textContent = currentPlayer;
 
-  // Cek pemenang setelah langkah
+  // Cek pemenang setelah langkah pemain
   if (checkWinner()) {
-    setTimeout(() => alert(`${currentPlayer} wins!`), 100);
+    setTimeout(() => alert(`${currentPlayer} wins!`), 100); // Menampilkan pemenang yang benar
     gameOver = true;
   } else if (board.every(cell => cell !== null)) {
     setTimeout(() => alert("It's a tie!"), 100);
     gameOver = true;
+  } else {
+    // Ganti giliran pemain hanya jika permainan belum selesai
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
   }
-
-  // Ganti giliran pemain setelah memeriksa pemenang
-  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 }
-
 
 function checkWinner() {
   const winPatterns = [
