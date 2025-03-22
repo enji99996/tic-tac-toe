@@ -19,6 +19,7 @@ function handleCellClick(cell) {
   board[index] = currentPlayer;
   cell.textContent = currentPlayer;
 
+  // Cek pemenang setelah langkah
   if (checkWinner()) {
     setTimeout(() => alert(`${currentPlayer} wins!`), 100);
     gameOver = true;
@@ -27,8 +28,10 @@ function handleCellClick(cell) {
     gameOver = true;
   }
 
+  // Ganti giliran pemain setelah memeriksa pemenang
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 }
+
 
 function checkWinner() {
   const winPatterns = [
